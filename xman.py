@@ -504,16 +504,16 @@ def crackcode(im, rotate=True, purify=True, minpixelcount=20, codelen=4):
         if value!=' ':
             s.append(value)
 
-        if len(s) != codelen:
-            return ['failed']
+    if len(s) != codelen:
+        return ['failed']
+    else:
+        if codelen == 4:
+            return compose_codelen4(s)
+        elif codelen == 5:
+            return compose_codelen5(s)
         else:
-            if codelen == 4:
-                return compose_codelen4(s)
-            elif codelen == 5:
-                return compose_codelen5(s)
-            else:
-                print 'expect len:', len(s)
-                return ['failed']
+            print 'expect len:', len(s)
+            return ['failed']
 
 def divide_hs(filename):
     im = get_binary_frame(filename)
